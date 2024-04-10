@@ -10,7 +10,7 @@ function [layer1_weight,layer2_weight] = backprop(i,layer1_weight,layer2_weight,
     for l=1:32
         x=0;
         for k=1:10
-            x=x+(2*(cost^(-1/2))*(op(k,i)*(1-op(k,i))));
+            x=x+((op(k,i)-responses(k,i))*(op(k,i)*(1-op(k,i))));
             del_weight2(k,l)=learn_rate*(x*(actv1(l,i)));
         end
         del_weight1(l,:)=x;
@@ -21,4 +21,5 @@ function [layer1_weight,layer2_weight] = backprop(i,layer1_weight,layer2_weight,
             del_weight1(m,n)=learn_rate*(del_weight1(m,n))*(actv1(m,n)*(1-actv1(m,n)))*(img(n,i));
         end
     end
+    layer1_weight=layer1_weight-del_weight1;
 end
