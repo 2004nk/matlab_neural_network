@@ -1,3 +1,3 @@
-function actv = nextlayer(actva,weight)
-    actv=sigmoid((weight*actva));
+function actv = nextlayer(actva,weight,bias)
+    actv=sigmoid((weight*actva)+bias);
 end
