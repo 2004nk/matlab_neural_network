@@ -1,0 +1,3 @@
+function actv = sigmoidprime(arr)
+    actv=sigmoid(arr).*(1-sigmoid(arr));
+end
